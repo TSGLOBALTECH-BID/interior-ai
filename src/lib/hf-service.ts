@@ -239,19 +239,20 @@ function generateFallbackFurniture(config: RoomConfig): FurnitureItem[] {
 }
 
 export async function generateAllDesigns(config: RoomConfig): Promise<DesignResult> {
-  const [imageUrl, description, furniture] = await Promise.all([
+  // , description, furniture
+  const [imageUrl] = await Promise.all([
     generateRoomImage(config),
-    generateDesignDescription(config),
-    generateFurnitureRecommendations(config),
+    // generateDesignDescription(config),
+    // generateFurnitureRecommendations(config),
   ]);
 
   const colorPalette = generateColorPalette(config.colorScheme);
 
   return {
     imageUrl,
-    description,
+    description: '',
     colorPalette,
-    furniture,
+    furniture: [],
   };
 }
 
